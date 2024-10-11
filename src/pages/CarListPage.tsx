@@ -1,13 +1,8 @@
 import { CarList } from '../components/CarList';
-import { useNavigate } from 'react-router-dom'
-import { carsData } from '../database'
+import { useCarList } from '../hooks/useCarList'
 
 export const CarListPage = () => {
-  const navigate = useNavigate();
+  const { cars, handleNavigateToDetails, loading } = useCarList()
 
-  const handleNavigateToDetails = (carId: number) => {
-    navigate(`/car/${carId}`);
-  };
-
-  return <CarList cars={carsData} onSelectCar={handleNavigateToDetails} />;
+  return <CarList cars={cars} onSelectCar={handleNavigateToDetails} loading={loading} />;
 };
