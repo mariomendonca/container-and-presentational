@@ -13,12 +13,15 @@ export const useCarList = () => {
     navigate(`/car/${carId}`);
   };
 
-
   useEffect(() => {
-    setTimeout(() => {
+    const loadCars = setTimeout(() => {
       setCars(carsData)
       setLoading(false)
     }, 3000)
+
+    return () => {
+      clearTimeout(loadCars)
+    }
   }, [])
 
   return { cars, loading, handleNavigateToDetails }
