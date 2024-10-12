@@ -1,4 +1,4 @@
-import { ICar } from './CarItem'
+import { CarItem, ICar } from './CarItem'
 
 interface ICarList {
   cars: ICar[]
@@ -11,12 +11,7 @@ export const CarList = ({ cars, onSelectCar, loading }: ICarList) => (
     <p>loading....</p>
   ) : (
     <ul>
-      {cars.map((car) => (
-        <li key={car.id}>
-          <h3>{car.name}</h3>
-          <button onClick={() => onSelectCar(car.id)}>See Details</button>
-        </li>
-      ))}
+      {cars.map((car) => <CarItem car={car} onSelectCar={onSelectCar} />)}
     </ul>
   )
 )
